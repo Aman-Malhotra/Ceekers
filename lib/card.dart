@@ -17,7 +17,7 @@ Widget card(Details d, Function fn, BuildContext c, ImageProvider image) {
               image: image),
           borderRadius: BorderRadius.circular(15.0)),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Hero(
             tag: d.name,

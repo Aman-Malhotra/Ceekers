@@ -115,6 +115,10 @@ class DataClass {
         .sort((a, b) => a.name.toLowerCase().compareTo(b.name.toLowerCase()));
   }
 
+  addDonation(Donation d) {
+    donList.add(d);
+  }
+
   List<Details> search(String search) {
     return mainData.where((d) {
       return d.name.toLowerCase().trim().contains(search.toLowerCase().trim())

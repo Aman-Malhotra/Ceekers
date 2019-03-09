@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:gndu_project/addOrg.dart';
 import 'package:gndu_project/data.dart';
 import 'package:gndu_project/details.dart';
 import 'package:gndu_project/donatePage.dart';
@@ -70,8 +71,19 @@ class _MainState extends State<Main> {
     });
   }
 
+  updateDonation(Donation don) {
+    d.addDonation(don);
+    setState(() {});
+  }
+
   updateData(Details details, String note) {
     d.updateNote(details, note);
+    sampleList = [];
+    d.mainData.forEach((a) {
+      if (a.note.trim().length > 0) {
+        sampleList.add(a);
+      }
+    });
     setState(() {});
   }
 
@@ -122,6 +134,41 @@ class _MainState extends State<Main> {
         physics: BouncingScrollPhysics(),
         // mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.2,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                Center(
+                  child: Text("\"HEARTS Grow with GIVING\"",
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.title.copyWith(
+                          fontSize: 24.0,
+                          color: Theme.of(context).primaryColor)),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    Icon(
+                      FontAwesomeIcons.heart,
+                      color: Theme.of(context).primaryColor,
+                      size: 40.0,
+                    ),
+                    Icon(
+                      FontAwesomeIcons.chartLine,
+                      color: Theme.of(context).primaryColor,
+                      size: 40.0,
+                    ),
+                    Icon(
+                      FontAwesomeIcons.handHolding,
+                      color: Theme.of(context).primaryColor,
+                      size: 40.0,
+                    )
+                  ],
+                ),
+              ],
+            ),
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
@@ -164,8 +211,8 @@ class _MainState extends State<Main> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) =>
-                                  Donate("DONATE COMMODITIES", d, updateData)));
+                              builder: (context) => Donate("DONATE COMMODITIES",
+                                  d, updateData, updateDonation)));
                     },
                     child: imageContainer(
                         Text("DONATE",
@@ -243,7 +290,7 @@ class _MainState extends State<Main> {
                         "${sampleList[i].note}",
                       ));
                 },
-                itemCount: sampleList.length,
+                itemCount: 3,
               ),
             ],
           ),
@@ -251,7 +298,12 @@ class _MainState extends State<Main> {
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Theme.of(context).primaryColor,
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => AddOrg("Add Organization")));
+        },
         child: Icon(Icons.add, size: 35.0),
       ),
     );

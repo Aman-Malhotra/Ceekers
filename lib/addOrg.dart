@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:gndu_project/data.dart';
 import 'package:gndu_project/details.dart';
 
-class Donate extends StatefulWidget {
+class AddOrg extends StatefulWidget {
   final String title;
-  final DataClass d;
-  final Function(Details, String) f;
-  final Function(Donation) addDonation;
-  Donate(this.title, this.d, this.f, this.addDonation);
+  AddOrg(this.title);
 
-  _DonateState createState() => _DonateState();
+  _AddOrgState createState() => _AddOrgState();
 }
 
-class _DonateState extends State<Donate> {
+class _AddOrgState extends State<AddOrg> {
   String note;
   bool form = false;
   TextEditingController name, email, contact, addr, city, state, zip, country;
@@ -55,7 +51,7 @@ class _DonateState extends State<Donate> {
               maxLines: 10,
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
-                labelText: "Donate Commodities  :",
+                labelText: "Add a sample note  :",
               ),
             )),
             fieldPadding(TextFormField(
@@ -109,18 +105,6 @@ class _DonateState extends State<Donate> {
           backgroundColor: Theme.of(context).primaryColor,
           child: Icon(Icons.send),
           onPressed: () {
-            widget.addDonation(Donation(
-              contact: contact.text,
-              location: Loc(
-                  addr: addr.text,
-                  city: city.text,
-                  country: country.text,
-                  state: state.text),
-              name: name.text,
-              zip: zip.text,
-              email: email.text,
-              note: note,
-            ));
             Navigator.pop(context);
           },
         ));
