@@ -44,7 +44,11 @@ class Search extends SearchDelegate {
     return ListView.builder(
       physics: BouncingScrollPhysics(),
       itemBuilder: (c, i) {
-        return Card(child: card(newD[i].name, () {}, context));
+        return Card(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15.0)),
+            child:
+                card(newD[i], () {}, context, NetworkImage(newD[i].imageUrl)));
       },
       itemCount: newD.length,
     );
@@ -57,14 +61,16 @@ class Search extends SearchDelegate {
       physics: BouncingScrollPhysics(),
       itemBuilder: (c, i) {
         return Card(
-            child: card(newD[i].name, () {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => OrgPage(
-                        d: newD[i],
-                      )));
-        }, context));
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15.0)),
+            child: card(newD[i], () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => OrgPage(
+                            d: newD[i],
+                          )));
+            }, context, NetworkImage(newD[i].imageUrl)));
       },
       itemCount: newD.length,
     );
