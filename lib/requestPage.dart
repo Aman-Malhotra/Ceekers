@@ -3,6 +3,7 @@ import 'package:gndu_project/card.dart';
 import 'package:gndu_project/data.dart';
 import 'package:gndu_project/details.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flushbar/flushbar.dart';
 
 class Request extends StatefulWidget {
   final String title;
@@ -52,10 +53,10 @@ class _RequestState extends State<Request> {
                           ListTile(
                             title: Text(widget.d.mainData[selected].note.trim(),
                                 style: Theme.of(context).textTheme.title),
-                            trailing: IconButton(
-                              icon: Icon(FontAwesomeIcons.donate),
-                              onPressed: () {},
-                            ),
+                            // trailing: IconButton(
+                            //   icon: Icon(FontAwesomeIcons.donate),
+                            //   onPressed: () {},
+                            // ),
                           ),
                         ],
                       ))
@@ -163,6 +164,11 @@ class _RequestState extends State<Request> {
                         note,
                       );
                       Navigator.pop(context);
+                      Flushbar()
+                        ..message = "Request Submitted"
+                        ..duration = Duration(seconds: 2)
+                        ..backgroundColor = Theme.of(context).primaryColor
+                        ..show(context);
                     }
                   : null,
             )

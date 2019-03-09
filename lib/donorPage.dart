@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:gndu_project/details.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class OrgPage extends StatefulWidget {
-  final Details d;
-  OrgPage({this.d});
+class DonorPage extends StatefulWidget {
+  final Donation d;
+  DonorPage({this.d});
 
-  _OrgPageState createState() => _OrgPageState();
+  _DonorPageState createState() => _DonorPageState();
 }
 
-class _OrgPageState extends State<OrgPage> {
+class _DonorPageState extends State<DonorPage> {
   Future<void> _launch(String url) async {
     if (await canLaunch(url)) {
       await launch(url);
@@ -67,22 +67,6 @@ class _OrgPageState extends State<OrgPage> {
           ),
           ListTile(
             leading: Icon(
-              Icons.open_in_browser,
-              color: Theme.of(context).primaryColor,
-              size: 30.0,
-            ),
-            title: Text(
-              (widget.d.website != null)
-                  ? "https://www.${widget.d.website}"
-                  : "NAN",
-              style: Theme.of(context).textTheme.subhead,
-            ),
-            onTap: () {
-              _launch("https://www.${widget.d.website}");
-            },
-          ),
-          ListTile(
-            leading: Icon(
               Icons.location_on,
               color: Theme.of(context).primaryColor,
               size: 30.0,
@@ -123,7 +107,7 @@ class _OrgPageState extends State<OrgPage> {
             title: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                "Requirements",
+                "Contribution",
                 style: Theme.of(context).textTheme.title,
               ),
             ),

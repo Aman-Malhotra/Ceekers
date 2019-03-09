@@ -25,7 +25,7 @@ class _DrawerMainState extends State<DrawerMain> {
                 width: double.infinity,
                 height: MediaQuery.of(context).size.height * 0.073,
                 child: Center(
-                  child: Text("Donation App",
+                  child: Text("BIG-HEARTED",
                       style: Theme.of(context).textTheme.subtitle),
                 ),
               ),

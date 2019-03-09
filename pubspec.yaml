@@ -21,7 +21,8 @@ dependencies:
   cupertino_icons: ^0.1.2
   url_launcher:
   font_awesome_flutter:
-    
+  flushbar:
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -47,6 +48,7 @@ flutter:
    - assets/a.jpg
    - assets/b.jpg
    - assets/c.jpg
+   - assets/logo.jpg
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

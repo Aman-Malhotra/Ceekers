@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gndu_project/details.dart';
+import 'package:gndu_project/orgPage.dart';
 
 class Requests extends StatefulWidget {
   final List<Details> d;
@@ -23,11 +24,20 @@ class _RequestsState extends State<Requests> {
           shrinkWrap: true,
           itemBuilder: (c, i) {
             return ListTile(
-                leading: Icon(FontAwesomeIcons.handHolding),
-                title: Text("${widget.d[i].name}'s :"),
-                subtitle: Text(
-                  "${widget.d[i].note}",
-                ));
+              leading: Icon(FontAwesomeIcons.handHolding),
+              title: Text("${widget.d[i].name}'s :"),
+              subtitle: Text(
+                "${widget.d[i].note}",
+              ),
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => OrgPage(
+                              d: widget.d[i],
+                            )));
+              },
+            );
           },
           itemCount: widget.d.length,
         ));
